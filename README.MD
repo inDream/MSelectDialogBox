@@ -18,7 +18,7 @@ Features
 
 Example
 ----------------------------------
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox({
   "list": (function(){
     var arr = [];
@@ -31,7 +31,7 @@ $("#selector").mSelectDBox({
   "autoComplete": true,
   "name": "a"
 });
-~~~~~
+```
 
 Constructor arguments
 ----------------------------------
@@ -40,7 +40,7 @@ Passing as single object with keys:
 * [Array] `list` - where list items may be key-value object with two string type properties `{label:String(1),value:String(1)}` or string
 
 Example:
-```
+```js
 var list = [
   {"label": "Apple", "value": "0"},
   {"label": "Orange", "value": "1"},
@@ -49,13 +49,13 @@ var list = [
 ```
 
 Example:
-```
+```js
 var list = ["Apple", "Orange", "Banana"];
 ```
 
 if need after initialization you can reassign the list by assigning a new array through a "set" method.
 Example:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox(
   "set",
   "list",
@@ -67,7 +67,7 @@ $("#selector").mSelectDBox(
       "epsilon"
     ]
 );
-~~~~~
+```
 
 * [Boolean] `multiple` - enable or disable multiple selection of items in list.
 Default: false.
@@ -127,7 +127,7 @@ Events
 Events may be attached in two ways:
 
 Example:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox({
   "list": [1,2,3],
   "onchange": function(msdbContext, event){
@@ -140,10 +140,10 @@ $("#selector").mSelectDBox({
     console.log(arguments);
   }
 });
-~~~~~
+```
 
 Example:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox({
   "list": [1,2,3],
   "events": {
@@ -158,7 +158,7 @@ $("#selector").mSelectDBox({
     }
   }
 });
-~~~~~ 
+``` 
 
 Autocomplete filters
 ----------------------------------
@@ -167,7 +167,7 @@ It compares each element of the list with the value of input.
 Returns `true` if it meets the search condition,`false` otherwise.
 
 Example:
-~~~~~ javascript
+```js
 /**
 * @param {String} inputString
 * @param {String | Number} optionString
@@ -177,7 +177,7 @@ function(inputString, optionString){
   optionString = String(optionString);
   return Boolean(optionString.match(pattern));
 }
-~~~~~
+```
 
 Passing through constructor (param. "optionFilters"). Or may be added after initialization `instance.get("optionFilters").push(function(matcherStr, matchedStr){...})`
 Filters available by default:
@@ -195,24 +195,24 @@ Predefined language codes:
 * ru - Russian
 
 Example:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox({
   "list": [1, 2, 3],
   "language": "en" // English
 });
-~~~~~
+```
 
 To define or redefine a texts for a particular language, you can use the method `setText`
-~~~~~ javascript
+```js
 // Initialized instance
 $("#selector").mSelectDBox("setText", "Tap to close", ".m-select-d-box-fade__outside-click-label-text", "en");
-~~~~~
+```
 
 the same to define new language support
-~~~~~ javascript
+```js
 // Initialized instance
 $("#selector").mSelectDBox("setText", "kapatmak için dokunun", ".m-select-d-box-fade__outside-click-label-text", "tr"); // Турецкий
-~~~~~
+```
 
 Texts codes:
 * `.m-select-d-box-fade__outside-click-label-text` - "Tap to close"
@@ -225,18 +225,18 @@ Methods
 Return array of matched instances.
 
 Example:
-```
+```js
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"});
 ```
 
 Alternative:
-```
+```js
 var dbox = $("#selector").mSelectDBox();
 ```
 
 ----------------------------------
 The following methods can be called as an instance method or as a parameter to the method "mSelectDBox".
-```
+```js
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"})[0];
 dbox.method(...);
 ```
@@ -245,21 +245,21 @@ dbox.method(...);
 `trigger([String] eventName)`, `.("trigger", [String] eventName)` — fire predefined event.
 
 Example:
-~~~~~ javascript
+```js
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"})[0];
 dbox.trigger("select");
-~~~~~
+```
 
 Alternative:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox("trigger","select");
-~~~~~
+```
 
 ### .on() ###
 `on([String] eventName, [Function] callback)`, `.("on", [String] eventName, [Function] callback)` — add custom event listener.
 
 Example:
-~~~~~ javascript
+```js
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"})[0];
 dbox.on(
   "select", 
@@ -267,10 +267,10 @@ dbox.on(
     console.log(arguments);
   }
 );
-~~~~~
+```
 
 Alternative:
-~~~~~ javascript
+``` js
 $("#selector").mSelectDBox(
   "on",
   "select",
@@ -278,10 +278,10 @@ $("#selector").mSelectDBox(
     console.log(arguments);
     }
 );
-~~~~~
+```
 
 ### .select() ###
-`select([Object] arg)`,`.("select", [Object] arg)` — select list options by value, label or id (key)
+`select([Object] arg)`, `.("select", [Object] arg)` — select list options by value, label or id (key)
 
 `arg = {"label": Array | String};`
 
@@ -290,39 +290,39 @@ or
 `arg = {"value": Array | String};`
 
 Example:
-~~~~~ javascript
+```js
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"})[0];
 dbox.select({"label": ["100", "200"]});
 dbox.select({"label": "100"});
 dbox.select({"value": "0"});
-~~~~~
+```
 
 Alternative:
-~~~~~ javascript
+```js
 $("#selector").mSelectDBox("select",{"label": ["100", "200"]});
-~~~~~
+```
 
 ### .getSelectedLabels() ###
 Return array of selected list labels
-~~~~~ javascript
+```js
 var array = $("#selector").mSelectDBox("getSelectedLabels");
-~~~~~
+```
 
 Alternative:
-~~~~~ javascript
+```js
 var array = $("#selector").mSelectDBox().getSelectedLabels();
-~~~~~
+```
 
 ### .getSelectedValues() ###
 Return array of selected list values
-~~~~~ javascript
+```js
 var array = $("#selector").mSelectDBox("getSelectedValues");
-~~~~~
+```
 
 Alternative:
-~~~~~ javascript
+```js
 var array = $("#selector").mSelectDBox().getSelectedValues();
-~~~~~
+```
 
 ### .selectAll() ###
 `selectAll(void)` — select all list options. Only if multiple = true
