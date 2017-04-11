@@ -1,4 +1,4 @@
-#MSelectDBox - jQuery plugin for interactive dropdown lists.
+# MSelectDBox - jQuery plugin for interactive dropdown lists.
 
 Features
 ----------------------------------
@@ -10,26 +10,26 @@ Features
 - Adapted for portable devices
 - API propose the possibility to customize control ([demo](https://eugenegantz.github.io/MSelectDialogBox/examples/example-1.html))
 
-####[Demo](https://eugenegantz.github.io/MSelectDialogBox/examples/example-1.html)####
-####[Download MSelectDialogBox.js](https://raw.githubusercontent.com/eugenegantz/MSelectDialogBox/master/dist/m-select-d-box.js)####
-####[Download MSelectDBox.min.js](https://raw.githubusercontent.com/eugenegantz/MSelectDialogBox/master/dist/m-select-d-box.min.js)####
-####[JSDoc documentation (detailed API)](https://github.com/eugenegantz/MSelectDialogBox/blob/master/docs/m-select-d-box.md)####
-####[Документация на русском](https://github.com/eugenegantz/MSelectDialogBox/blob/master/README.ru.md)####
+#### [Demo](https://eugenegantz.github.io/MSelectDialogBox/examples/example-1.html) ####
+#### [Download MSelectDialogBox.js](https://raw.githubusercontent.com/eugenegantz/MSelectDialogBox/master/dist/m-select-d-box.js) ####
+#### [Download MSelectDBox.min.js](https://raw.githubusercontent.com/eugenegantz/MSelectDialogBox/master/dist/m-select-d-box.min.js) ####
+#### [JSDoc documentation (detailed API)](https://github.com/eugenegantz/MSelectDialogBox/blob/master/docs/m-select-d-box.md) ####
+#### [Документация на русском](https://github.com/eugenegantz/MSelectDialogBox/blob/master/README.ru.md) ####
 
 Example
 ----------------------------------
 ~~~~~ javascript
 $("#selector").mSelectDBox({
-	"list": (function(){
-		var arr = [];
-		for(var c=0; c<30; c++){
-			arr.push(Math.round(Math.random() * 10000));
-		}
-		return arr;
-	})(),
-	"multiple": false,
-	"autoComplete": true,
-	"name": "a"
+  "list": (function(){
+    var arr = [];
+    for(var c=0; c<30; c++){
+      arr.push(Math.round(Math.random() * 10000));
+    }
+    return arr;
+  })(),
+  "multiple": false,
+  "autoComplete": true,
+  "name": "a"
 });
 ~~~~~
 
@@ -42,9 +42,9 @@ Passing as single object with keys:
 Example:
 ```
 var list = [
-	{"label": "Apple", "value": "0"},
-	{"label": "Orange", "value": "1"},
-	{"label": "Banana", "value": "2"}
+  {"label": "Apple", "value": "0"},
+  {"label": "Orange", "value": "1"},
+  {"label": "Banana", "value": "2"}
 ];
 ```
 
@@ -57,14 +57,14 @@ if need after initialization you can reassign the list by assigning a new array 
 Example:
 ~~~~~ javascript
 $("#selector").mSelectDBox(
-	"set",
-	"list",
-	[
-    	"alpha",
-    	"beta",
-    	"gamma",
-    	"delta",
-    	"epsilon"
+  "set",
+  "list",
+  [
+      "alpha",
+      "beta",
+      "gamma",
+      "delta",
+      "epsilon"
     ]
 );
 ~~~~~
@@ -129,34 +129,34 @@ Events may be attached in two ways:
 Example:
 ~~~~~ javascript
 $("#selector").mSelectDBox({
-	"list": [1,2,3],
-	"onchange": function(msdbContext, event){
-		console.log(arguments);
-	},
-	"onselect": function(msdbContext, event){
-		console.log(arguments);
-	},
-	"input:empty": function(msdbContext, event){
-		console.log(arguments);
-	}
+  "list": [1,2,3],
+  "onchange": function(msdbContext, event){
+    console.log(arguments);
+  },
+  "onselect": function(msdbContext, event){
+    console.log(arguments);
+  },
+  "input:empty": function(msdbContext, event){
+    console.log(arguments);
+  }
 });
 ~~~~~
 
 Example:
 ~~~~~ javascript
 $("#selector").mSelectDBox({
-	"list": [1,2,3],
-	"events": {
-		"change": function(msdbContext, event){
-			console.log(arguments);
-		},
-		"select": function(msdbContext, event){
-			console.log(arguments);
-		},
-		"input:empty": function(msdbContext, event){
-			console.log(arguments);
-		}
-	}
+  "list": [1,2,3],
+  "events": {
+    "change": function(msdbContext, event){
+      console.log(arguments);
+    },
+    "select": function(msdbContext, event){
+      console.log(arguments);
+    },
+    "input:empty": function(msdbContext, event){
+      console.log(arguments);
+    }
+  }
 });
 ~~~~~ 
 
@@ -173,9 +173,9 @@ Example:
 * @param {String | Number} optionString
 */
 function(inputString, optionString){
-	var pattern = new RegExp(inputString.trim(),"ig");
-	optionString = String(optionString);
-	return Boolean(optionString.match(pattern));
+  var pattern = new RegExp(inputString.trim(),"ig");
+  optionString = String(optionString);
+  return Boolean(optionString.match(pattern));
 }
 ~~~~~
 
@@ -197,8 +197,8 @@ Predefined language codes:
 Example:
 ~~~~~ javascript
 $("#selector").mSelectDBox({
-	"list": [1, 2, 3],
-	"language": "en" // English
+  "list": [1, 2, 3],
+  "language": "en" // English
 });
 ~~~~~
 
@@ -220,7 +220,7 @@ Texts codes:
 
 Methods
 ----------------------------------
-###.getInstances()###
+### .getInstances() ###
 `getInstances([Object] arg)` — search initialized instances by name.
 Return array of matched instances.
 
@@ -241,7 +241,7 @@ var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"
 dbox.method(...);
 ```
 
-###.trigger()###
+### .trigger() ###
 `trigger([String] eventName)`, `.("trigger", [String] eventName)` — fire predefined event.
 
 Example:
@@ -255,32 +255,32 @@ Alternative:
 $("#selector").mSelectDBox("trigger","select");
 ~~~~~
 
-###.on()###
+### .on() ###
 `on([String] eventName, [Function] callback)`, `.("on", [String] eventName, [Function] callback)` — add custom event listener.
 
 Example:
 ~~~~~ javascript
 var dbox = $.prototype.mSelectDBox.prototype.getInstances({"name":"instanceName"})[0];
 dbox.on(
-	"select", 
-	function(msdbContext, event){
-		console.log(arguments);
-	}
+  "select", 
+  function(msdbContext, event){
+    console.log(arguments);
+  }
 );
 ~~~~~
 
 Alternative:
 ~~~~~ javascript
 $("#selector").mSelectDBox(
-	"on",
-	"select",
-	function(msdbContext, event){
-		console.log(arguments);
+  "on",
+  "select",
+  function(msdbContext, event){
+    console.log(arguments);
     }
 );
 ~~~~~
 
-###.select()###
+### .select() ###
 `select([Object] arg)`,`.("select", [Object] arg)` — select list options by value, label or id (key)
 
 `arg = {"label": Array | String};`
@@ -302,7 +302,7 @@ Alternative:
 $("#selector").mSelectDBox("select",{"label": ["100", "200"]});
 ~~~~~
 
-###.getSelectedLabels()###
+### .getSelectedLabels() ###
 Return array of selected list labels
 ~~~~~ javascript
 var array = $("#selector").mSelectDBox("getSelectedLabels");
@@ -313,7 +313,7 @@ Alternative:
 var array = $("#selector").mSelectDBox().getSelectedLabels();
 ~~~~~
 
-###.getSelectedValues()###
+### .getSelectedValues() ###
 Return array of selected list values
 ~~~~~ javascript
 var array = $("#selector").mSelectDBox("getSelectedValues");
@@ -324,25 +324,25 @@ Alternative:
 var array = $("#selector").mSelectDBox().getSelectedValues();
 ~~~~~
 
-###.selectAll()###
+### .selectAll() ###
 `selectAll(void)` — select all list options. Only if multiple = true
 
-###.deselectAll()###
+### .deselectAll() ###
 `deselectAll(void)`
 
-###.open()###
+### .open() ###
 `open(void)` — show list box
 
-###.close()###
+### .close() ###  
 `close(void)` — hide list box
 
-###.isActive()###
+### .isActive() ###
 `isActive(void)` — return true if list box is visible
 
-###.get()###
+### .get() ###
 `get([String] key)` — returns property of MSelectDBox instance
 
-###.set()###
+### .set() ###
 `set([String] key, [Any] value)` — set new or update property of MSelectDBox instance
 
 TODO
